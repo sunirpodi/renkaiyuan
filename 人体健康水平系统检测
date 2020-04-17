@@ -1,0 +1,266 @@
+#include <iostream>
+#include <locale>
+using namespace std;
+
+typedef struct healthy {
+    string sex,name;
+    float strature, weight,BMI;
+    int p,q,r, heartrate;
+}healthy;
+healthy pp;
+
+float man(float x, float y);
+float women(float x, float y);
+float reckon(float x, float y);
+float SetSex(string x, float y, float z);
+void womencout(float z);
+void mancout(float z);
+void coutan(string sex, float z);
+void coutt(float t);
+void coutxueya(int p, int q,int r,int heartrate);
+void coutf(float f);
+
+void womencout(float z)
+{
+    cout << "女性" << endl;
+    if (z <15 && z>10)
+        cout << "健康指数:" << z << 
+        " 严重偏瘦，极度营养不良，容易造成低血压低血糖等一系列并发症，建议立即增加饮食，并配以保健品恢复" << endl;
+    else if (z >= 15&& z <= 18.5)
+        cout << "健康指数:" << z <<
+        " 偏瘦，身为女孩子有着苗条纤细的身材，着实令人羡慕，但同时也要注意自身营养健康哦" << endl;
+    else if (z > 18.5 && z <= 24.9)
+        cout << "健康指数:" << z <<
+        "标准体重，相信你在大街上一定能赢得很多男性的回头率，好好保持" << endl;
+    else if (z > 25.0 && z <= 29)
+        cout << "健康指数:" << z <<
+        "略微超重，虽然影响不大但是女孩子还是最好好好控制自己的体重" << endl;
+    else if (z > 29 && z < 50)
+        cout << "健康指数:" << z <<
+        "严重超重，你已经过度肥胖，肥胖是很多疾病的诱因，建议立即制定减肥计划，让自己未来的路更加顺畅" << endl;
+    else
+        cout << "健康指数:" << z << 
+        " 请输入正确的身高和体重" << endl;
+
+}
+
+void mancout(float z)
+{
+    cout << "男性" << endl;
+    if (z < 15 && z>10)
+        cout << "健康指数:" << z <<
+        "严重偏瘦，极度营养不良，容易造成低血压低血糖等一系列并发症，建议立即增加饮食，并配以保健品恢复" << endl;
+    else if (z >= 15 && z <= 18.5)
+        cout << "健康指数:" << z << 
+        "偏瘦，身体明显不够强壮，无法展示男人的力量美，给人的安全感不足，可进行增肌训练" << endl;
+    else if (z > 18.5 && z <= 24.9)
+        cout << "健康指数:" << z << 
+        "标准体重，男模型身材，具有和谐的流线美，保持身材的你会有很高的魅力值" << endl;
+    else if (z > 25 && z <= 29)
+        cout << "健康指数:" << z << 
+        "略微超重，肌肉丰厚力量强大，如果能减少一些肥肉就更好了" << endl;
+    else if (z > 29 && z < 50)
+        cout << "健康指数:" << z << 
+        "严重超重，你已经过度肥胖，肥胖是很多疾病的诱因，建议立即制定减肥计划，让自己未来的路更加顺畅" << endl;
+    else
+        cout << "健康指数:" << z << 
+        "请输入正确的身高和体重" << endl;
+
+}
+
+float man(float x, float y)
+{
+    float z = reckon(x, y / 100);
+    if (z < 100 && z>0)
+    {
+        return z;
+    }
+    
+}
+
+float women(float x, float y)
+{
+    float z = reckon(x, y / 100);
+    if (z < 100 && z>0)
+    {
+        return z;
+    }
+
+}
+
+float reckon(float x, float y)
+{
+    float z = x / (y*y);
+    return z;
+}
+
+float SetSex(string x, float y, float z)
+{
+    if (x == "man")
+    {
+        return man(y, z);
+    }
+
+    else if (x == "women")
+    {
+        return women(y, z);
+    }
+
+    else
+        cout << "请输入正确的性别: 男:man  女:women ." << endl;
+}
+
+void coutan(string x, float z)
+{
+    if (x == "man")
+        mancout(z);
+    else if (x == "women")
+        womencout(z);
+
+}
+
+void coutxueya(int p,int q,int r,int heartrate) {
+    int a=0;
+    a= r+p-q-111;
+    pp.heartrate = a;
+    if (a >-10 && a < 15) {
+        cout << a << "基础代谢率正常" << endl;
+    }
+    else if (a < -10) {
+        cout << a << "基础代谢率:甲状腺功能衰退" << endl;
+    }
+    else if (a >= 15 && a < 30) {
+        cout << a << "基础代谢率:轻度甲亢" << endl;
+    }
+    else if (a >= 30 && a < 60) {
+        cout << a << "基础代谢率:中度甲亢" << endl;
+    }
+    else if (a >= 60 && a < 90) {
+        cout << a << "基础代谢率:重度甲亢" << endl;
+    }
+    else {
+        cout << a << "输入有误" << endl;
+    }
+    if (p < 90 || q <60) {
+        cout << "目前处于低血压" << endl;
+    }
+    else if (p >=140 || q > 90) {
+        cout << "目前处于高血压" << endl;
+    }
+    else 
+        cout << "血压值正常" << endl;
+    if (r < 60) {
+        cout << "心率较慢" << endl;
+    }
+    else if (r > 100) {
+        cout << "心率较快" << endl;
+    }
+    else if (r >= 60 && r <= 100) {
+        cout << "心率正常" << endl;
+    }
+    else
+        cout << "输入有误" << endl;
+  
+}
+
+void coutt(float t) {
+    if (t > 10 && t < 18.5)
+        cout << "该测试人群普遍体型偏瘦，存在营养不良的症状" << endl;
+    else if (t >= 18.5&&t <= 24.9)
+        cout << "该测试人群体型基本符合正常标准" << endl;
+    else if (t > 24.9&&t < 50)
+        cout << "该测试人群普遍体型偏胖，存在超重的风险" << endl;
+    else
+        cout << "输入的信息有误，请返回重新输入" << endl;
+
+}
+
+void coutf(float f) {
+    if (f > -10 && f <= 15)
+        cout << "该测试人群基础代谢率正常" << endl;
+    else if (f > 15 && f < 90)
+        cout << "该测试人群存在不同程度甲亢" << endl;
+    else if (f > -40 && f <= -10)
+        cout << "该测试人群存在不同程度甲状腺衰弱" << endl;
+    else
+        cout << "输入信息有误，请返回重新输入" << endl;
+}
+
+void main()
+{
+    healthy people[1000];
+    int j=0,m=0,n=0;
+    float i=0,a=0,t=0,tt=0,f=0,g=0;
+    cout << "----------------------------" << endl;
+    cout << "欢迎使用人体健康指数管理软件" << endl;
+    while (1) {
+        people[n].p = 0;
+        people[n].q = 0;
+        people[n].strature = 0;
+        people[n].weight = 0;
+        cout << "请输入姓名" << endl;
+        cin >> people[n].name;
+        cout << "请输入性别(man/women):" << endl;
+        cin >> people[n].sex;
+            cout << "请输入体重(/kg):" << endl;
+            cin >> people[n].weight;
+            cout << "请输入身高(/cm):" << endl;
+            cin >> people[n].strature;
+            a += SetSex(people[n].sex, people[n].weight, people[n].strature);
+            people[n].BMI= SetSex(people[n].sex, people[n].weight, people[n].strature);
+            j++;
+            coutan(people[n].sex, SetSex(people[n].sex, people[n].weight, people[n].strature));
+            cout << "请输入收缩压(mmHg):" << endl;
+            cin >> people[n].p;
+            cout << "请输入舒张压(mmHg):" << endl;
+            cin >> people[n].q;
+            cout << "请输入心率(次/分钟)" << endl;
+            cin >> people[n].r;
+            coutxueya(people[n].p, people[n].q,people[n].r,people[n].heartrate);
+            tt += pp.heartrate;
+        n++;
+        cout << "查询本人潜在疾病输入3，查看本次查询平均值输入2，继续查询输入1，退出输入0" << endl;
+        cin >> i;
+        if (i == 0)
+            break;
+        if (i == 2) {
+            cout << "平均健康指数" << endl;
+            cout << a / j << endl;
+            t = a / j;
+            coutt(t);
+            cout << "平均基础代谢率" << endl;
+            cout << tt / j << endl;
+            f = tt / j;
+            coutf(f);
+        }
+        if (i == 3) {
+            int z = 0;
+            if (people[n-1].BMI < 18.5) {
+                cout << "营养不良 骨质疏松 贫血 ";
+                z++;
+            }
+            if (people[n-1].BMI > 24.9) {
+                cout << "皮肤病 糖尿病 癌症 ";
+                z++;
+            }
+            if (pp.heartrate < -10) {
+                cout << "低血压 甲状腺衰退" << endl;
+                z++;
+            }
+            if (pp.heartrate > 15) {
+                cout << "高血压 冠心病 甲亢" << endl;
+                z++;
+            }
+            if (z == 0)
+                cout << "恭喜你，你的身体很健康" << endl;
+        }
+        cout << "继续查询输入1，退出输入0" << endl;
+        cin >> g;
+        if (g == 0)
+            break;
+    }
+   
+    cout << "欢迎您下次使用" << endl;
+    cout << "------------------" << endl;
+    system("pause");
+}
